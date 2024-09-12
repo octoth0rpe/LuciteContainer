@@ -43,9 +43,9 @@ class Container implements \Psr\Container\ContainerInterface
      * @param mixed $value The value associated with the key in the container.
      *
      * @throws DuplicateIdentifierException if a value already exists for the given key.
-     * @return void
+     * @return Container
      */
-    public function add(string $key, mixed $value): void
+    public function add(string $key, mixed $value): Container
     {
         if ($this->has($key)) {
             throw new DuplicateIdentifierException($key);
@@ -54,6 +54,7 @@ class Container implements \Psr\Container\ContainerInterface
             self::$SIMPLE,
             $value,
         ];
+        return $this;
     }
 
     /**
@@ -63,9 +64,9 @@ class Container implements \Psr\Container\ContainerInterface
      * @param mixed $constructor The function used to create a value for the given key.
      *
      * @throws DuplicateIdentifierException if a value already exists for the given key.
-     * @return void
+     * @return Container
      */
-    public function addConstructor(string $key, callable $constructor): void
+    public function addConstructor(string $key, callable $constructor): Container
     {
         if ($this->has($key)) {
             throw new DuplicateIdentifierException($key);
@@ -74,6 +75,7 @@ class Container implements \Psr\Container\ContainerInterface
             self::$CONSTRUCTABLE,
             $constructor,
         ];
+        return $this;
     }
 
     /**
@@ -86,9 +88,9 @@ class Container implements \Psr\Container\ContainerInterface
      * @param mixed $constructor The function used to create a value for the given key.
      *
      * @throws DuplicateIdentifierException if a value already exists for the given key.
-     * @return void
+     * @return Container
      */
-    public function addSingleton(string $key, callable $constructor): void
+    public function addSingleton(string $key, callable $constructor): Container
     {
         if ($this->has($key)) {
             throw new DuplicateIdentifierException($key);
@@ -97,5 +99,6 @@ class Container implements \Psr\Container\ContainerInterface
             self::$SINGLETON,
             $constructor,
         ];
+        return $this;
     }
 }
