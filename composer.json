@@ -1,0 +1,36 @@
+{
+    "name": "lucite/container",
+    "description": "A simple psr-11 container with a few extras bolted on and minimal magic",
+    "type": "library",
+    "require": {
+    		"php": "^8.0",
+        "psr/container": "^2.0"
+    },
+    "keywords": [
+        "container",
+        "dependency",
+        "injection",
+        "di"
+    ],
+    "version": "0.0.1",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Lucite\\Container\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mike Thorn",
+            "email": "mthorn.work@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "laravel/pint": "^1.17",
+        "phpunit/phpunit": "^11.3"
+    },
+    "scripts": {
+        "format": "pint --preset psr12",
+        "test": "phpunit tests/"
+    }
+}
